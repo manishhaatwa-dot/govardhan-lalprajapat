@@ -1,0 +1,75 @@
+name: Update Photo Gallery
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "images/**"
+      - ".github/workflows/gallery.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-gallery:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate gallery index
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path("images")
+          supported = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+          folders = []
+
+          if root.exists():
+              for folder in sorted(root.iterdir(), key=lambda p: p.name.casefold()):
+                  if not folder.is_dir():
+                      continue
+
+                  photos = sorted(
+                      (
+                          p for p in folder.rglob("*")
+                          if p.is_file() and p.suffix.lower() in supported
+                      ),
+                      key=lambda p: str(p).casefold()
+                  )
+
+                  if photos:
+                      folders.append({
+                          "folder": folder.name,
+                          "images": [
+                              "./" + p.as_posix()
+                              for p in photos
+                          ]
+                      })
+
+          output = "window.GALLERY_INDEX = " + json.dumps(
+              folders, ensure_ascii=False, indent=2
+          ) + ";\n"
+
+          Path("gallery-index.js").write_text(output, encoding="utf-8")
+          print(f"Generated gallery for {len(folders)} folders.")
+          PY
+
+      - name: Commit updated gallery index
+        run: |
+          if git diff --quiet -- gallery-index.js; then
+            echo "Gallery index is already up to date."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add gallery-index.js
+            git commit -m "Automatically update photo gallery"
+            git push
+          fi
