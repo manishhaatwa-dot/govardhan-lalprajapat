@@ -1,35 +1,51 @@
-// =====================================================
-// GOVARDHAN LAL PRAJAPAT - GALLERY INDEX
-// File: gallery-index.js
-// =====================================================
-
 window.GALLERY_INDEX = [
-    {
-        folder: "Achievements",
-        images: [
-            "./images/Achievements/Samman-2009.jpg",
-            "./images/Achievements/Samman-2023.jpg"
-        ]
-    },
-    {
-        folder: "Sant-Sewa",
-        images: [
-            "./images/Sant-Sewa/sant-sewa-1.jpg",
-            "./images/Sant-Sewa/sant-sewa-2.jpg"
-        ]
-    },
-    {
-        folder: "Political-Programs",
-        images: [
-            "./images/Political-Programs/program-1.jpg",
-            "./images/Political-Programs/program-2.jpg"
-        ]
-    },
-    {
-        folder: "Social-Work",
-        images: [
-            "./images/Social-Work/social-work-1.jpg",
-            "./images/Social-Work/social-work-2.jpg"
-        ]
-    }
+  {
+    "folder": "Achivement",
+    "images": [
+      "./images/Achivement/A.jpg",
+      "./images/Achivement/B.jpg",
+      "./images/Achivement/C.jpg",
+      "./images/Achivement/D.jpg",
+      "./images/Achivement/E.jpg"
+    ]
+  },
+  {
+    "folder": "Senior-Leaders",
+    "images": [
+      "./images/Senior-Leaders/CM  श्री अशोक जी गहलोत के पाली आगमन पर duty.jpg",
+      "./images/Senior-Leaders/CM  श्री अशोक जी गहलोत के पाली आगमन पर.jpg",
+      "./images/Senior-Leaders/श्री सचिन जी पायलट.jpg",
+      "./images/Senior-Leaders/श्रीमति गिरजा व्यास.jpg",
+      "./images/Senior-Leaders/श्रीमति सोनिया गांधी के पाली आगमन पर duty .jpg"
+    ]
+  },
+  {
+    "folder": "संत सेवा",
+    "images": [
+      "./images/संत सेवा/Aसंत सेवा.jpg",
+      "./images/संत सेवा/B . संत सेवा.jpg",
+      "./images/संत सेवा/C.संत सेवा.jpg",
+      "./images/संत सेवा/D.संत सेवा.jpg",
+      "./images/संत सेवा/E.संत सेवा.jpg"
+    ]
+  },
+  {
+    "folder": "सामाजिक सेवा",
+    "images": [
+      "./images/सामाजिक सेवा/A.jpg",
+      "./images/सामाजिक सेवा/B.jpg",
+      "./images/सामाजिक सेवा/C.jpg",
+      "./images/सामाजिक सेवा/D.jpg"
+    ]
+  },
+  {
+    "folder": "सेवा-भाव",
+    "images": [
+      "./images/सेवा-भाव/A .jpg",
+      "./images/सेवा-भाव/B.jpg",
+      "./images/सेवा-भाव/C.jpg",
+      "./images/सेवा-भाव/D.jpg",
+      "./images/सेवा-भाव/E.jpg"
+    ]
+  }
 ];
